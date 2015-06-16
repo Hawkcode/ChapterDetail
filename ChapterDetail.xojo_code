@@ -186,7 +186,7 @@ Begin WebPage ChapterDetail
       HelpTag         =   ""
       HorizontalCenter=   0
       Index           =   -2147483648
-      Left            =   73
+      Left            =   90
       LockBottom      =   False
       LockedInPosition=   False
       LockHorizontal  =   False

@@ -471,6 +471,14 @@ End
 
 #tag WindowCode
 	#tag Event
+		Sub Close()
+		  app.Quit
+		  Session.Quit
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Shown()
 		  Dim lsSql as String
 		  Dim rs as RecordSet

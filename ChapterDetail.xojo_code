@@ -57,6 +57,7 @@ Begin WebPage ChapterDetail
       Style           =   "1005678785"
       TabOrder        =   0
       Text            =   "Loading..."
+      TextAlign       =   0
       Top             =   4
       VerticalCenter  =   0
       Visible         =   True
@@ -92,6 +93,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Meeting Location:"
+      TextAlign       =   0
       Top             =   74
       VerticalCenter  =   0
       Visible         =   True
@@ -127,6 +129,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Chapter Website:"
+      TextAlign       =   0
       Top             =   92
       VerticalCenter  =   0
       Visible         =   True
@@ -163,6 +166,7 @@ Begin WebPage ChapterDetail
       TabOrder        =   2
       Target          =   1
       Text            =   ""
+      TextAlign       =   0
       Top             =   90
       URL             =   ""
       VerticalCenter  =   0
@@ -199,6 +203,7 @@ Begin WebPage ChapterDetail
       Style           =   "0"
       TabOrder        =   1
       Text            =   ""
+      TextAlign       =   0
       Top             =   40
       VerticalCenter  =   0
       Visible         =   True
@@ -277,6 +282,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Mailing Addresss:"
+      TextAlign       =   0
       Top             =   110
       VerticalCenter  =   0
       Visible         =   True
@@ -312,6 +318,7 @@ Begin WebPage ChapterDetail
       Style           =   "-1"
       TabOrder        =   1
       Text            =   ""
+      TextAlign       =   0
       Top             =   56
       VerticalCenter  =   0
       Visible         =   True
@@ -347,6 +354,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Region:"
+      TextAlign       =   0
       Top             =   40
       VerticalCenter  =   0
       Visible         =   True
@@ -382,6 +390,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Meeting Day:"
+      TextAlign       =   0
       Top             =   56
       VerticalCenter  =   0
       Visible         =   True
@@ -417,6 +426,7 @@ Begin WebPage ChapterDetail
       Style           =   "0"
       TabOrder        =   1
       Text            =   ""
+      TextAlign       =   0
       Top             =   74
       VerticalCenter  =   0
       Visible         =   True
@@ -452,6 +462,7 @@ Begin WebPage ChapterDetail
       Style           =   "0"
       TabOrder        =   1
       Text            =   ""
+      TextAlign       =   0
       Top             =   110
       VerticalCenter  =   0
       Visible         =   True
@@ -492,7 +503,7 @@ End
 		  lsSql = lsSql + "INNER JOIN tblaspechaptercodes ON tblpeople.ChapterCode = tblaspechaptercodes.ChapterCode "
 		  lsSql = lsSql + "INNER JOIN tblaspeofficercodes ON tblpeoplechapterofficers.OfficerCode = tblaspeofficercodes.OfficerCode "
 		  
-		  lsSql = lsSql + "WHERE tblpeople.ChapterCode = '" + msChapter + "'  "
+		  lsSql = lsSql + "WHERE tblpeople.ChapterCode = '" + msChapter + "' and Term = '" + GetCurrentTerm(Today) + "' "
 		  
 		  lsSql = lsSql + "ORDER BY tblpeoplechapterofficers.OfficerCode ASC "
 		  
@@ -541,6 +552,29 @@ End
 	#tag EndEvent
 
 
+	#tag Method, Flags = &h0
+		Function GetCurrentTerm(dtNow as Date) As String
+		  
+		  Dim lnYr, lnYr2, lnMo as integer
+		  Dim lsResult as String
+		  
+		  lnYr = dtNow.Year
+		  lnMo = dtNow.Month
+		  
+		  if lnMo >6 then
+		    lnYr2 = lnYr + 1
+		    lsResult = lnYr.ToText + "-" + lnYr2.ToText
+		  else
+		    lnYr2 = lnYr - 1
+		    lsResult = lnYr2.ToText + "-" + lnYr.ToText
+		  end
+		  
+		  Return lsResult
+		  
+		End Function
+	#tag EndMethod
+
+
 	#tag Property, Flags = &h0
 		msChapter As String
 	#tag EndProperty
@@ -564,7 +598,7 @@ End
 		Type="Integer"
 		EditorType="Enum"
 		#tag EnumValues
-			"0 - Auto"
+			"0 - Automatic"
 			"1 - Standard Pointer"
 			"2 - Finger Pointer"
 			"3 - IBeam"
@@ -575,10 +609,10 @@ End
 			"8 - Arrow South"
 			"9 - Arrow East"
 			"10 - Arrow West"
-			"11 - Arrow North East"
-			"12 - Arrow North West"
-			"13 - Arrow South East"
-			"14 - Arrow South West"
+			"11 - Arrow Northeast"
+			"12 - Arrow Northwest"
+			"13 - Arrow Southeast"
+			"14 - Arrow Southwest"
 			"15 - Splitter East West"
 			"16 - Splitter North South"
 			"17 - Progress"
@@ -678,6 +712,11 @@ End
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="msChapter"
+		Group="Behavior"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
@@ -733,6 +772,12 @@ End
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="_DeclareLineRendered"
+		Group="Behavior"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="_HorizontalPercent"
 		Group="Behavior"
 		Type="Double"
@@ -763,6 +808,11 @@ End
 		Name="_OfficialControl"
 		Group="Behavior"
 		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="_OpenEventFired"
+		Group="Behavior"
 		Type="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty

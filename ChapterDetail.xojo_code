@@ -3,7 +3,7 @@ Begin WebPage ChapterDetail
    Compatibility   =   ""
    Cursor          =   0
    Enabled         =   True
-   Height          =   400
+   Height          =   418
    HelpTag         =   ""
    HorizontalCenter=   0
    ImplicitInstance=   True
@@ -40,7 +40,7 @@ Begin WebPage ChapterDetail
       Cursor          =   1
       Enabled         =   True
       HasFocusRing    =   True
-      Height          =   24
+      Height          =   37
       HelpTag         =   ""
       HorizontalCenter=   0
       Index           =   -2147483648
@@ -93,7 +93,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Meeting Location:"
-      TextAlign       =   0
+      TextAlign       =   1
       Top             =   74
       VerticalCenter  =   0
       Visible         =   True
@@ -129,7 +129,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Chapter Website:"
-      TextAlign       =   0
+      TextAlign       =   1
       Top             =   92
       VerticalCenter  =   0
       Visible         =   True
@@ -282,7 +282,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Mailing Addresss:"
-      TextAlign       =   0
+      TextAlign       =   1
       Top             =   110
       VerticalCenter  =   0
       Visible         =   True
@@ -354,7 +354,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Region:"
-      TextAlign       =   0
+      TextAlign       =   1
       Top             =   40
       VerticalCenter  =   0
       Visible         =   True
@@ -390,7 +390,7 @@ Begin WebPage ChapterDetail
       Style           =   "776128260"
       TabOrder        =   1
       Text            =   "Meeting Day:"
-      TextAlign       =   0
+      TextAlign       =   1
       Top             =   56
       VerticalCenter  =   0
       Visible         =   True
@@ -477,14 +477,43 @@ Begin WebPage ChapterDetail
       _OpenEventFired =   False
       _VerticalPercent=   0.0
    End
+   Begin WebLabel Label1
+      Cursor          =   1
+      Enabled         =   True
+      HasFocusRing    =   True
+      Height          =   22
+      HelpTag         =   ""
+      HorizontalCenter=   0
+      Index           =   -2147483648
+      Left            =   265
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Multiline       =   False
+      Scope           =   0
+      Style           =   "-1"
+      TabOrder        =   3
+      Text            =   "Double Click to send email."
+      TextAlign       =   2
+      Top             =   383
+      VerticalCenter  =   0
+      Visible         =   True
+      Width           =   420
+      ZIndex          =   1
+      _NeedsRendering =   True
+   End
 End
 #tag EndWebPage
 
 #tag WindowCode
 	#tag Event
 		Sub Close()
-		  app.Quit
-		  Session.Quit
+		  'Quit
+		  'Session.Quit
 		  
 		End Sub
 	#tag EndEvent
@@ -585,7 +614,9 @@ End
 #tag Events lstOfficers
 	#tag Event
 		Sub DoubleClick(X As Integer, Y As Integer, Details As REALbasic.MouseEvent)
-		  ShowURL("mailto:" + me.Cell(me.ListIndex , 3))
+		  if me.ListIndex <> -1 then
+		    ShowURL("mailto:" + me.Cell(me.ListIndex , 3), true)
+		  end
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -715,6 +746,7 @@ End
 		Name="msChapter"
 		Group="Behavior"
 		Type="String"
+		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"

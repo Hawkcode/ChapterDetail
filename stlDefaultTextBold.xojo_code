@@ -2,7 +2,7 @@
 WebStyle stlDefaultTextBold
 Inherits WebStyle
 	#tag WebStyleStateGroup
-		text-align=right
+		text-align=left
 		text-decoration=True false false false false
 		text-font=System
 		text-size=100%

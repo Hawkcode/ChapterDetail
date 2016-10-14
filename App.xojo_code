@@ -6,8 +6,8 @@ Inherits WebApplication
 		  self.Security.FrameEmbedding = WebAppSecurityOptions.FrameOptions.Allow
 		  
 		  App.AutoQuit = True
-		  App.Timeout = 1
-		  App.SessionTimeout = 1
+		  App.Timeout = 60
+		  'App.SessionTimeout = 1
 		End Sub
 	#tag EndEvent
 

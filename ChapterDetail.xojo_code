@@ -221,7 +221,7 @@ Begin WebPage ChapterDetail
    Begin WebListBox lstOfficers
       AlternateRowColor=   &cEDF3FE00
       ColumnCount     =   4
-      ColumnWidths    =   "300,250,120,*"
+      ColumnWidths    =   "*,450,120,0"
       Cursor          =   0
       Enabled         =   True
       HasHeading      =   True
@@ -504,7 +504,14 @@ Begin WebPage ChapterDetail
       Visible         =   True
       Width           =   420
       ZIndex          =   1
+      _DeclareLineRendered=   False
+      _HorizontalPercent=   0.0
+      _IsEmbedded     =   False
+      _Locked         =   False
       _NeedsRendering =   True
+      _OfficialControl=   False
+      _OpenEventFired =   False
+      _VerticalPercent=   0.0
    End
 End
 #tag EndWebPage

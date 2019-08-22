@@ -162,7 +162,7 @@ Begin WebPage ChapterDetail
       LockVertical    =   False
       Multiline       =   False
       Scope           =   0
-      Style           =   "-1"
+      Style           =   "0"
       TabOrder        =   2
       Target          =   1
       Text            =   ""
@@ -245,7 +245,7 @@ Begin WebPage ChapterDetail
       PrimaryRowColor =   &cFFFFFF00
       Scope           =   0
       SelectionStyle  =   "0"
-      Style           =   "-1"
+      Style           =   "0"
       TabOrder        =   -1
       Top             =   133
       VerticalCenter  =   0
@@ -315,7 +315,7 @@ Begin WebPage ChapterDetail
       LockVertical    =   False
       Multiline       =   False
       Scope           =   0
-      Style           =   "-1"
+      Style           =   "0"
       TabOrder        =   1
       Text            =   ""
       TextAlign       =   0
@@ -495,7 +495,7 @@ Begin WebPage ChapterDetail
       LockVertical    =   False
       Multiline       =   False
       Scope           =   0
-      Style           =   "-1"
+      Style           =   "0"
       TabOrder        =   3
       Text            =   "Double Click to send email."
       TextAlign       =   2

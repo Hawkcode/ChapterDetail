@@ -171,7 +171,7 @@ Begin WebPage ChapterDetail
       URL             =   ""
       VerticalCenter  =   0
       Visible         =   True
-      Width           =   621
+      Width           =   720
       ZIndex          =   1
       _DeclareLineRendered=   False
       _HorizontalPercent=   0.0
@@ -540,7 +540,7 @@ End
 		  lsSql = lsSql + "INNER JOIN tblaspeofficercodes ON tblpeoplechapterofficers.OfficerCode = tblaspeofficercodes.OfficerCode "
 		  
 		  lsSql = lsSql + "WHERE tblpeople.ChapterCode = '" + msChapter + "' and Term = '" + GetCurrentTerm(Today) + "' "
-		  lsSql = lsSql + "and tblpeople.MemStatus = 'Active Member' "
+		  lsSql = lsSql + "and tblpeople.MemStatus = 'Active Member' and tblpeoplechapterofficers.Removed = 0 "
 		  
 		  lsSql = lsSql + "ORDER BY tblpeoplechapterofficers.OfficerCode ASC "
 		  
